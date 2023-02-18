@@ -1,25 +1,20 @@
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
-import { Button, Typography } from '@mui/material';
+import {Box, Button, Typography} from '@mui/material';
 import { useCopyToClipboard } from 'react-use';
 import { saveAs } from 'file-saver';
 import { useEffect } from 'react';
+import DeleteSecret from "./DeleteSecret";
 
-const RenderSecret = ({ secret }: { readonly secret: string }) => {
+const RenderSecret = ({ secret, deleteUri }: { readonly secret: string, readonly deleteUri?: string }) => {
   const { t } = useTranslation();
   const [copy, copyToClipboard] = useCopyToClipboard();
 
   return (
     <div>
-      <Typography variant="h4">{t('secret.titleMessage')}</Typography>
-      <Typography>{t('secret.subtitleMessage')}</Typography>
-      <Button
-        color={copy.error ? 'secondary' : 'primary'}
-        onClick={() => copyToClipboard(secret)}
-      >
-        <FontAwesomeIcon icon={faCopy} /> {t('secret.buttonCopy')}
-      </Button>
+      <Typography textAlign="center" marginBottom="2rem"  variant="h4">{t('secret.titleMessage')}</Typography>
+      <Typography textAlign="center" marginBottom="2rem" >{t('secret.subtitleMessage')}</Typography>
       <Typography
         id="pre"
         data-test-id="preformatted-text-secret"
@@ -38,6 +33,16 @@ const RenderSecret = ({ secret }: { readonly secret: string }) => {
       >
         {secret}
       </Typography>
+        <Box display="flex" gap={2} justifyContent="center" marginTop="2rem">
+            <Button
+                color={copy.error ? 'secondary' : 'primary'}
+                variant="contained"
+                onClick={() => copyToClipboard(secret)}
+            >
+                <FontAwesomeIcon icon={faCopy} /> &nbsp; {t('secret.buttonCopy')}
+            </Button>
+            { deleteUri && <DeleteSecret url={deleteUri} /> }
+        </Box>
     </div>
   );
 };
@@ -68,17 +73,19 @@ const DownloadSecret = ({
 };
 
 const Secret = ({
-  secret,
-  fileName,
+    secret,
+    deleteUri,
+    fileName,
 }: {
-  readonly secret: string;
-  readonly fileName?: string;
+    readonly secret: string;
+    readonly deleteUri?: string;
+    readonly fileName?: string;
 }) => {
   if (fileName) {
     return <DownloadSecret fileName={fileName} secret={secret} />;
   }
 
-  return <RenderSecret secret={secret} />;
+  return <RenderSecret secret={secret} deleteUri={deleteUri} />;
 };
 
 export default Secret;

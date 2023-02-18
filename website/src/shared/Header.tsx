@@ -1,48 +1,26 @@
-import { AppBar, Toolbar, Typography, Button, Box, Link } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
+import { AppBar, Toolbar, Typography, Box, Link } from '@mui/material';
 
 export const Header = () => {
-  const { t } = useTranslation();
-  const location = useLocation();
-  const isOnUploadPage = location.pathname.includes('upload');
   const base = process.env.PUBLIC_URL || '';
   const home = base + '/#/';
-  const upload = base + '/#/upload';
   return (
-    <AppBar position="static" color="transparent" sx={{ marginBottom: 4 }}>
-      <Toolbar>
+    <AppBar position="static" color="dark" sx={{ marginBottom: 4, boxShadow: 0 }} >
+      <Toolbar style={{justifyContent: "center"}}>
         <Link href={home} color="inherit" underline="none">
           <Typography variant="h6" component="div">
-            Yopass
             <Box
               sx={{
                 verticalAlign: 'middle',
-                paddingLeft: '5px',
-                width: '40px',
-                height: '40px',
+                paddingY: '24px',
+                height: '50px',
               }}
               component="img"
-              height="40"
-              alt=""
-              src="yopass.svg"
+              height="50"
+              alt="Adeliom"
+              src="logo.svg"
             />
           </Typography>
         </Link>
-        <Box
-          sx={{
-            marginLeft: 'auto',
-          }}
-        >
-          <Button
-            component={Link}
-            href={isOnUploadPage ? home : upload}
-            variant="contained"
-            color="primary"
-          >
-            {isOnUploadPage ? t('header.buttonHome') : t('header.buttonUpload')}
-          </Button>
-        </Box>
       </Toolbar>
     </AppBar>
   );

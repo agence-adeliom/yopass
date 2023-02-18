@@ -18,10 +18,9 @@
     "noImplicitAny": true,
     "importHelpers": false,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "noFallthroughCasesInSwitch": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": ["src", "mui.d.ts"]
 }

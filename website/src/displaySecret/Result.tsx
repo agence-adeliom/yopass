@@ -30,8 +30,8 @@ const Result = ({ uuid, password, prefix, customPassword }: ResultProps) => {
 
   return (
     <Box>
-      <Typography variant="h4">{t('result.title')}</Typography>
-      <Typography>
+      <Typography textAlign="center" marginBottom="2rem" variant="h4">{t('result.title')}</Typography>
+      <Typography textAlign="center" marginBottom="2rem" maxWidth="600px" marginX="auto">
         {t('result.subtitleDownloadOnce')}
         <br />
         {t('result.subtitleChannel')}

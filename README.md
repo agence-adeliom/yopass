@@ -112,7 +112,7 @@ Yopass will then be available under the domain you specified through `VIRTUAL_HO
 Advanced users that already have a reverse proxy handling TLS connections can use the `insecure` setup:
 
 ```console
-cd deploy/docker/compose/insecure
+cd deploy/docker-compose/insecure
 docker-compose up -d
 ```
 Afterwards point your reverse proxy to `127.0.0.1:80`.
@@ -132,7 +132,7 @@ Without TLS encryption (needs a reverse proxy for transport encryption):
 
 ```console
 docker run --name memcached_yopass -d memcached
-docker run -p 127.0.0.1:80:1337 --link memcached_yopass:memcached -d jhaals/yopass --memcached=memcached:11211
+docker run -p 127.0.0.1:1337:1337 --link memcached_yopass:memcached -d jhaals/yopass --memcached=memcached:11211
 ```
 
 Afterwards point your reverse proxy that handles the TLS connections to `127.0.0.1:80`.

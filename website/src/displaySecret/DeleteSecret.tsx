@@ -69,7 +69,7 @@ const DeleteSecret = ({ url }: { readonly url: string }) => {
   return (
     <>
       <Button color="secondary" onClick={handleConfirmOpen} disabled={deleted}>
-        <FontAwesomeIcon icon={faTrash} /> {t('delete.buttonDelete')}
+        <FontAwesomeIcon icon={faTrash} /> &nbsp; {t('delete.buttonDelete')}
       </Button>
 
       <Dialog

@@ -99,6 +99,7 @@ const CreateSecret = () => {
       <Error
         message={errors.secret?.message}
         onClick={() => clearErrors('secret')}
+        style={{marginBottom: "10px"}}
       />
       <Typography component="h1" variant="h4" align="center">
         {t('create.title')}
@@ -108,6 +109,7 @@ const CreateSecret = () => {
           <TextField
             inputRef={register({ required: true })}
             multiline={true}
+            color="dark"
             name="secret"
             margin="dense"
             fullWidth
@@ -160,7 +162,6 @@ export const OneTime = (props: { register: UseFormMethods['register'] }) => {
             name="onetime"
             inputRef={props.register()}
             defaultChecked={true}
-            color="primary"
           />
         }
         label={t('create.inputOneTimeLabel') as string}
@@ -183,6 +184,7 @@ export const SpecifyPasswordInput = (props: {
         inputRef={props.register()}
         name="password"
         variant="outlined"
+        color="dark"
         inputProps={{
           autoComplete: 'off',
           spellCheck: 'false',
@@ -205,7 +207,6 @@ export const SpecifyPasswordToggle = (props: {
             name="generateDecryptionKey"
             inputRef={props.register()}
             defaultChecked={true}
-            color="primary"
           />
         }
         label={t('create.inputGenerateLabel') as string}

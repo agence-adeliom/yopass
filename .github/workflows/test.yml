@@ -40,13 +40,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: yarn install
-        run: cd website && yarn install
-      - name: yarn lint
-        run: cd website && yarn run lint
+      - name: npm install
+        run: cd website && npm install
+      - name: npm lint
+        run: cd website && npm run lint
       - uses: cypress-io/github-action@v2
         with:
-          start: yarn start
+          start: npm start
           wait-on: "http://localhost:3000"
           working-directory: website
           browser: chrome

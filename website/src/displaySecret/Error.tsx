@@ -11,7 +11,7 @@ const ErrorPage = (props: { error?: Error }) => {
 
   return (
     <div>
-      <Typography variant="h4">{t('error.title')}</Typography>
+      <Typography textAlign="center" marginBottom="2rem" variant="h4">{t('error.title')}</Typography>
       <Typography variant="h5">{t('error.subtitle')}</Typography>
       <br />
       <Typography sx={styles} variant="h5">

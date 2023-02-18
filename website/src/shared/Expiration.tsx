@@ -21,12 +21,9 @@ export const Expiration = (props: { control: UseFormMethods['control'] }) => {
         as={
           <RadioGroup
             row
-            sx={{
-              root: {
-                radioGroup: {
-                  justifyContent: 'center',
-                },
-              },
+            style={{
+                display: 'flex',
+                justifyContent: 'center',
             }}
           >
             <FormControlLabel
