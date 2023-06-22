@@ -38,7 +38,7 @@
   "result": {
     "title": "Secret stocké dans la base de données",
     "subtitleDownloadOnce": "N'oubliez pas que les secrets ne peuvent être téléchargés qu'une seule fois s'ils ne sont pas définis autrement. Alors n'ouvrez pas le lien vous-même.",
-    "subtitleChannel": "Le prudent devrait envoyer la clé de déchiffrement dans un canal de communication distinct.",
+    "subtitleChannel": "Le plus prudent serrai d'envoyer la clé de déchiffrement dans un canal de communication distinct.",
     "rowLabelOneClick": "Lien unique",
     "rowLabelShortLink": "Lien court",
     "rowLabelDecryptionKey": "Clé de déchiffrement"
@@ -46,14 +46,14 @@
   "secret": {
     "titleFile": "Fichier téléchargé",
     "titleMessage": "Message déchiffré",
-    "subtitleMessage": "Ce secret pourrait ne pas être à nouveau visible, assurez-vous de le sauver maintenant!",
+    "subtitleMessage": "Ce secret pourrait ne pas être à nouveau visible, assurez-vous de le sauver maintenant !",
     "buttonCopy": "Copier"
   },
   "delete": {
     "buttonDelete": "Supprimer",
-    "messageDeleted": "Le secret est supprimé du serveur!",
-    "dialogTitle": "Supprimer le secret?",
-    "dialogMessage": "Êtes-vous sûr de vouloir supprimer ce secret?",
+    "messageDeleted": "Le secret est supprimé du serveur !",
+    "dialogTitle": "Supprimer le secret ?",
+    "dialogMessage": "Êtes-vous sûr de vouloir supprimer ce secret ?",
     "dialogProgress": "Suppression...",
     "dialogConfirm": "Supprimer",
     "dialogCancel": "Annuler"
