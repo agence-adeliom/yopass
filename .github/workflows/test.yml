@@ -31,20 +31,19 @@ jobs:
           go test ./... -race -coverprofile=coverage.txt -covermode=atomic -v
 
       - name: codecov upload
-        uses: codecov/codecov-action@v1.0.3
-        env:
+        uses: codecov/codecov-action@v3
+        with:
           token: ${{ secrets.CODECOV_TOKEN }}
-
   node:
     name: Website Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: npm install
-        run: cd website && npm install
-      - name: npm lint
-        run: cd website && npm run lint
-      - uses: cypress-io/github-action@v2
+      - name: yarn install
+        run: cd website && yarn install
+      - name: yarn lint
+        run: cd website && yarn run lint
+      - uses: cypress-io/github-action@v5
         with:
           start: npm start
           wait-on: "http://localhost:3000"
@@ -54,3 +53,16 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  dependabot-merge:
+    name: "Dependabot automerge"
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    needs: [ "node", "go"]
+    if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          target: 'minor'

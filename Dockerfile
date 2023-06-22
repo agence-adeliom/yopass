@@ -4,13 +4,11 @@ WORKDIR /yopass
 COPY . .
 RUN go build ./cmd/yopass && go build ./cmd/yopass-server
 
-#
 FROM node:16 as website
 COPY website /website
 WORKDIR /website
-RUN npm install && npm run build
+RUN yarn install --network-timeout 600000 && yarn build
 
-#
 FROM gcr.io/distroless/base
 COPY --from=app /yopass/yopass /yopass/yopass-server /
 COPY --from=website /website/build /public
